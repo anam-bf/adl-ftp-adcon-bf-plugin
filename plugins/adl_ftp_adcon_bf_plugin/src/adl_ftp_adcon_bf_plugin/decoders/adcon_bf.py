@@ -22,7 +22,7 @@ class AdconBFDecoder(FTPDecoder):
         
         # get the dates we need to check
         dates = get_dates_to_now(date_granularity=station_link.date_granularity,
-                                 timezone=station_link.timezone_info,
+                                 timezone=station_link.timezone,
                                  from_date=station_link.start_date,
                                  as_string=True,
                                  str_format="%Y%m%d")
