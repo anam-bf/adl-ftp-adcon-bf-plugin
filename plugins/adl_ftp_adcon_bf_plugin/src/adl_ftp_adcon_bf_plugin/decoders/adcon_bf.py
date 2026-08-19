@@ -49,7 +49,7 @@ class AdconBFDecoder(FTPDecoder):
         # date format like 20251702
         date_time_str = df["Date"].astype(str) + df["Heure"].astype(str)
         
-        df["TIMESTAMP"] = pd.to_datetime(date_time_str, format="%Y%d%m%H%M")
+        df["observation_time"] = pd.to_datetime(date_time_str, format="%Y%d%m%H%M")
         df = df.where(pd.notna(df), None)
         
         records = df.to_dict(orient="records", )
