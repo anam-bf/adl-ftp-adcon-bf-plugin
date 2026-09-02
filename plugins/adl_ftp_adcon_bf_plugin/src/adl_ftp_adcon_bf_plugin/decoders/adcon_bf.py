@@ -16,9 +16,9 @@ class AdconBFDecoder(FTPDecoder):
     compat_type = "adcon_bf"
     display_name = "ADCON FTP Burkina Faso"
     
-    def get_matching_files(self, station_link, files):
+    def get_matching_files(self, station_link, files, start_date=None, end_date=None):
         # get all the initial matching files
-        matching_files = super().get_matching_files(station_link, files)
+        matching_files = super().get_matching_files(station_link, files, start_date, end_date)
         
         # get the dates we need to check
         dates = get_dates_to_now(date_granularity=station_link.date_granularity,
