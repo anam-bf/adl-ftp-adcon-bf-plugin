@@ -24,7 +24,11 @@ screenshots:
 - name: adcon_bf_variable_mappings
   url: /networkftp/edit/1/
   capture:
-    selector: '#id_variable_mappings-FORMS'
+    # The whole panel, not just its formset: #id_variable_mappings-FORMS starts
+    # below the "Variable Mappings" header and slices it. Wagtail gives an
+    # InlinePanel the id #panel-<relation>-section, which is the element that
+    # holds the header and the rows together.
+    selector: '#panel-variable_mappings-section'
 - name: adcon_bf_station_link_form
   url: /ftpstationlink/edit/1/
   callouts:

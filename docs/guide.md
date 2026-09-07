@@ -1,3 +1,11 @@
+---
+adl_plugin:
+  name: ADL ADCON FTP Burkina Faso Plugin
+  connects_to: FTP decoder for ADCON stations
+  category: country
+  country: Burkina Faso
+  country_flag: "🇧🇫"
+---
 # ADL ADCON FTP Burkina Faso Plugin
 
 Adds a **decoder** to the [ADL FTP Plugin](https://github.com/wmo-raf/adl-ftp-plugin)
@@ -54,8 +62,8 @@ this guide covers what is specific to the Burkina Faso files.
 
 ## Installation
 
-Installed like any ADL plugin — see the core *Plugin Installation* page for all
-methods. Both entries are needed in `plugins.toml`, the FTP plugin first:
+Installed like any ADL plugin — see [Plugin Installation](https://adl-tool.readthedocs.io/en/latest/developer_guide/plugins/plugin_installation.html) for
+all methods. Both entries are needed in `plugins.toml`, the FTP plugin first:
 
 ```toml
 [[plugins]]
@@ -173,8 +181,9 @@ One run, per enabled station link:
 All monitoring for a connection using this decoder is the FTP plugin's: the
 **Ingestion Diagnostic** page proves the FTP host, port and account, and the
 station link's **Station Source Check** proves the resolved remote path and
-counts the files matching the pattern. Their messages are catalogued in the
-FTP plugin guide. This plugin adds no check of its own — a file that lists
+counts the files matching the pattern. How to read both screens is covered in
+[Monitoring & Diagnostics](https://adl-tool.readthedocs.io/en/latest/user_guide/monitoring_and_diagnostics.html); their FTP-specific messages are catalogued
+in the FTP plugin guide. This plugin adds no check of its own — a file that lists
 and downloads fine but does not decode shows up as a **run failure or a
 warning in the activity log**, not in the source checks.
 
