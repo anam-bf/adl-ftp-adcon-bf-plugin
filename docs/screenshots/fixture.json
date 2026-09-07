@@ -1,0 +1,88 @@
+{
+  "capture": {
+    "connection": "ADCON FTP Burkina Faso (mock source)",
+    "ingest": true,
+    "probe": true,
+    "station_checks": [
+      "DEMO001"
+    ],
+    "wait": 240
+  },
+  "connection": {
+    "model": "adl_ftp_plugin.NetworkFTP",
+    "fields": {
+      "name": "ADCON FTP Burkina Faso (mock source)",
+      "plugin": "adl_ftp_plugin",
+      "stations_timezone": "Africa/Ouagadougou",
+      "plugin_processing_interval": 1,
+      "connection_type": "ftp",
+      "host": "$ENV:ADCON_BF_FTP_HOST|mock_ftp",
+      "port": "$ENV:ADCON_BF_FTP_PORT|21",
+      "username": "$ENV:ADCON_BF_FTP_USER|demo",
+      "password": "$ENV:ADCON_BF_FTP_PASSWORD|demo",
+      "passive_mode": true,
+      "timeout": 20,
+      "decoder": "adcon_bf"
+    },
+    "children": {
+      "variable_mappings": [
+        {
+          "adl_parameter": "Air Temperature",
+          "file_variable_name": "Temperature",
+          "file_variable_unit": "degC"
+        },
+        {
+          "adl_parameter": "Relative Humidity",
+          "file_variable_name": "Humidite",
+          "file_variable_unit": "percent"
+        },
+        {
+          "adl_parameter": "Atmospheric Pressure",
+          "file_variable_name": "Pression",
+          "file_variable_unit": "hPa"
+        },
+        {
+          "adl_parameter": "Precipitation",
+          "file_variable_name": "Pluie",
+          "file_variable_unit": "mm"
+        },
+        {
+          "adl_parameter": "Wind Speed",
+          "file_variable_name": "Vent vitesse",
+          "file_variable_unit": "m/s"
+        },
+        {
+          "adl_parameter": "Wind Direction",
+          "file_variable_name": "Vent direction",
+          "file_variable_unit": "degree"
+        }
+      ]
+    }
+  },
+  "station_links": [
+    {
+      "model": "adl_ftp_plugin.FTPStationLink",
+      "station": "DEMO001",
+      "fields": {
+        "ftp_path": "$ENV:ADCON_BF_FTP_PATH|/adcon-bf",
+        "file_pattern": "0-854-0-001-*.txt",
+        "listing_strategy": "pattern_only",
+        "date_granularity": "day",
+        "start_date": "$NOW-1d",
+        "skip_already_downloaded_files": false
+      }
+    },
+    {
+      "model": "adl_ftp_plugin.FTPStationLink",
+      "station": "DEMO002",
+      "fields": {
+        "ftp_path": "$ENV:ADCON_BF_FTP_PATH|/adcon-bf",
+        "file_pattern": "0-854-0-002-*.txt",
+        "listing_strategy": "pattern_only",
+        "date_granularity": "day",
+        "start_date": "$NOW-1d",
+        "skip_already_downloaded_files": false
+      }
+    }
+  ]
+}
